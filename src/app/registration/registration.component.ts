@@ -13,6 +13,8 @@ export class RegistrationComponent {
     constructor(private apiService: ApiService) { }
 
     user: Users = new Users();
+    response : any;
+    error : any;
 
     submit(): void {
         // let data = {
@@ -26,9 +28,9 @@ export class RegistrationComponent {
         //     "role": "ADMIN"
         // };
         this.apiService.doPost("/user", this.user).subscribe(response => {
-            console.log("add user success");
+            this.response = response;    
         }, error => {
-            console.error("add user failed");
+            this.error = error;   
         })
     }
 }

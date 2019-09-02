@@ -13,8 +13,8 @@ export class ListUserComponent {
     user: Array<Users> = [];
 
     constructor(private apiService: ApiService) {
-        this.apiService.doGet("/user").subscribe((user: Users) => {
-            this.user[3] = user;
+        this.apiService.doGet("/user").subscribe((user) => {
+            this.user = user as Array<Users>;
             console.log(this.user);
         }, error => {
             console.error("get user failed");
