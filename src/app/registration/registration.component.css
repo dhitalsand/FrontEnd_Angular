@@ -15,4 +15,11 @@ input[type=text], select, textarea {
     padding: 12px 12px 12px 0px;
     display: inline-block;
   }
+
+  #respId{
+  color : green
+  }
   
+  #errorId{
+    color : red;
+  }
