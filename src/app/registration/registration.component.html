@@ -1,8 +1,8 @@
 <div class="container">
     <form>
-        <div id='respId' *ngIf="response">user added succesfully.</div>
-        <div id='errorId' *ngIf="error">failed to add user. Please try again</div>
 
+        <div>{{respStatus}}</div>  
+             
         <div class="form-group">
             <label for="Full name">Full Name</label>
             <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="user.name"
