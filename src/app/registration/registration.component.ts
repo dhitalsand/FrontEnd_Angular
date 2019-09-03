@@ -1,20 +1,25 @@
 import { Users } from './users.model';
 
-import { Component, Input } from '@angular/core';
+import { Component} from '@angular/core';
 import { ApiService } from '../shared/apiservice.service';
 
 @Component({
     templateUrl: './registration.component.html',
     styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent {
+export class RegistrationComponent  {
+   
+   
+    
 
-
-    constructor(private apiService: ApiService) { }
+    constructor(private apiService: ApiService) {      
+    }
 
     user: Users = new Users();
     response : any;
     error : any;
+    respStatus : String;
+
 
     submit(): void {
         // let data = {
@@ -28,9 +33,18 @@ export class RegistrationComponent {
         //     "role": "ADMIN"
         // };
         this.apiService.doPost("/user", this.user).subscribe(response => {
-            this.response = response;    
+            this.response = response;         
         }, error => {
-            this.error = error;   
-        })
+            this.error = error;     
+        }) 
+       this.showStatus();
+    }
+    
+    showStatus() : void{
+        if (this.response){
+            this.respStatus = "user added succesfully";   
+        }
+        else if (this.error)
+        this.respStatus = "Unable to add user. Please try again";     
     }
 }
